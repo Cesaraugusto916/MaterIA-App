@@ -1,7 +1,6 @@
 Quero que você assista atentamente a este vídeo do canal Curso em Vídeo, do professor Gustavo Guanabara, e extraia informações relevantes sobre a estrutura didática utilizada. Meu objetivo é criar uma base neutra para futuros cursos de programação com auxílio de IAs, então quero que você me forneça os seguintes dados, com foco na reutilização do modelo didático.
 
 
-
 Para cada vídeo analisado, extraia e organize os seguintes campos:
 
 
