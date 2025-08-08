@@ -1,135 +1,141 @@
-# 🚀 Projeto Educacional Modular com IA — **"Mundos Didáticos"**
+# 🚀 Projeto Educacional Modular com IA — **"Mundos Didáticos"**  
+### Versão focada em bibliotecas, frameworks e tecnologias
 
-> Uma proposta aberta, extensível e colaborativa para a criação de cursos técnicos e de programação com auxílio de Inteligência Artificial.
+> Uma estrutura padronizada para criação de cursos técnicos focados em **bibliotecas, frameworks e tecnologias específicas**, com auxílio de Inteligência Artificial na produção de conteúdo didático.
 
 ---
 
 ## 📘 Sobre o Projeto
 
-Este projeto tem como objetivo construir uma **estrutura educacional modular, neutra e expansível**, voltada para o ensino de **programação, tecnologia e áreas correlatas**, utilizando **modelos de Inteligência Artificial (IA)** como coparticipantes na geração do conteúdo.
+Este projeto tem como objetivo fornecer uma **base sólida, reutilizável e escalável** para criar cursos técnicos voltados para **bibliotecas, frameworks ou tecnologias específicas**, usando **modelos de Inteligência Artificial (IA)** como parceiras na geração de conteúdo.
 
-Inspirado na metodologia progressiva de cursos como o **Curso em Vídeo**, do professor Gustavo Guanabara, este projeto busca traduzir boas práticas pedagógicas em **templates reutilizáveis** — organizando os cursos em **Mundos**, cada um composto por **aulas**, desafios e conexões pedagógicas.
+Inspirado na metodologia progressiva de cursos como o **Curso em Vídeo**, de Gustavo Guanabara, e adaptado para um formato mais técnico, este projeto organiza o aprendizado em:
+
+- **Cursos**: escopo geral da biblioteca/tecnologia.
+- **Mundos**: blocos temáticos que agrupam comandos, funções e conceitos.
+- **Aulas**: conteúdos detalhados, práticos e ilustrados.
+
+O objetivo final é gerar **apostilas bem escritas, ilustradas, com exemplos comentados e exercícios**, sem sobrecarga desnecessária para o aluno.
 
 ---
 
 ## 🧠 A Ideia Central
 
-Imagine que você queira criar um curso completo de **Python**, **Java**, **Git**, ou até **Redes de Computadores**. Em vez de construir tudo do zero, você pode usar uma estrutura pronta que define:
+Em vez de tentar abranger qualquer área de conhecimento de forma ampla, o projeto agora **foca em bibliotecas e tecnologias**.  
+Cada curso é desenvolvido de forma modular:
 
-- Como deve ser o conteúdo de um curso
-- Como os mundos devem ser organizados
-- Como cada aula deve ser escrita
-- Onde a IA entra em cada etapa
+1. **Curso (`curso.md`)** — Define o tema central, público-alvo, pré-requisitos e lista de mundos.
+2. **Mundo (`mundo-X.md`)** — Organiza as frentes de estudo, comandos-chave e tópicos que serão transformados em aulas.
+3. **Aula (`aula-XX.md`)** — Estrutura para gerar o conteúdo didático completo.
 
-Esse sistema permite que **qualquer linguagem, qualquer nível e qualquer área técnica** seja desenvolvida com clareza, progressão e didática.
+Esse formato possibilita criar, por exemplo:
+- Curso de **Pandas**
+- Curso de **Matplotlib**
+- Curso de **NumPy**
+- Curso de **Django**
+- E assim por diante.
+
+Cada um com progressão lógica e linguagem didática, mas mantendo profundidade técnica.
 
 ---
 
 ## 🧩 Estrutura Modular
 
-O projeto é dividido em três níveis principais de organização:
+O projeto é dividido em três níveis:
 
-### 🧷 1. Curso (`curso.md`)
+### 📚 1. Curso (`curso.md`)
 Define:
-- Título do curso
-- Área de conhecimento
-- Público-alvo
-- Metodologia geral
-- Lista de mundos e objetivos
+- Nome e escopo do curso (biblioteca/tecnologia)
+- Público-alvo e pré-requisitos
+- Organização dos mundos
+- Metodologia e estilo esperado
 
 ### 🌍 2. Mundo (`mundo-X.md`)
-Cada mundo representa um estágio de aprendizado dentro do curso. Define:
-- Tema do mundo
+- Tema central do mundo
 - Objetivos de aprendizagem
-- Ferramentas utilizadas
-- Lista das aulas
+- Ferramentas necessárias
+- **Frentes de estudo e comandos-chave** que serão transformados em aulas
+- Lista das aulas previstas
 
-### 📚 3. Aula (`aula-XX.md`)
-Cada aula contém:
+### 🧠 3. Aula (`aula-XX.md`)
 - Introdução ao tema
-- Explicação teórica (a ser gerada por IA)
-- Demonstração prática
-- Dicas e armadilhas
-- Ganchos para a próxima aula
-- [Espaço reservado para os exercícios]
+- Conteúdo teórico explicado de forma clara e leve
+- Exemplos práticos e aplicados
+- Demonstrações realistas
+- Dicas, armadilhas comuns e soluções
+- Recursos visuais sugeridos
+- Exercícios práticos
 
 ---
 
 ## 🧪 IA na Prática
 
-O projeto é projetado para funcionar **lado a lado com IAs como ChatGPT, Gemini e Copilot**, que desempenham papéis diferentes:
+O projeto foi pensado para ser usado **lado a lado com ferramentas de IA** como ChatGPT, Copilot e Gemini.
 
 | Etapa | Responsável |
 |-------|-------------|
-| Extração de conteúdo de vídeo | Gemini (ou outra IA de análise de vídeo) |
-| Geração de apostilas e teoria | ChatGPT ou similares |
-| Geração de exercícios | Copilot / ChatGPT |
-| Correção automática | (Em construção — validadores com testes) |
+| Estrutura e planejamento do curso | Humano / IA |
+| Organização dos mundos e comandos | Humano / IA |
+| Geração do conteúdo das aulas | IA (com base nos templates) |
+| Geração de exercícios e desafios | IA |
+| Diagramação final da apostila | Humano / IA |
 
-As IAs seguem instruções padronizadas definidas em arquivos como `IA-instrucoes.md` ou via prompts reutilizáveis.
+A IA **não apenas escreve**: ela segue instruções detalhadas nos templates para garantir clareza, progressão e exemplos aplicados.
 
 ---
 
 ## ✨ Vantagens da Abordagem
 
-- ✅ Padronização de conteúdo gerado por IA
-- ✅ Reutilização de templates para qualquer linguagem ou nível
-- ✅ Modularidade: é possível expandir, melhorar, adaptar e remixar
-- ✅ Ideal para portfólios, escolas, professores ou autodidatas
-- ✅ Estrutura compatível com GitHub, Jupyter, plataformas web ou PDF
+- ✅ Conteúdo padronizado e consistente
+- ✅ Foco em bibliotecas e tecnologias específicas
+- ✅ Modularidade: é fácil expandir, adaptar ou atualizar
+- ✅ Ideal para portfólios, escolas e autoaprendizado
+- ✅ Preparado para integração com GitHub, PDF, plataformas web ou Jupyter
 
 ---
 
 ## 📂 Exemplo de Organização
 
-```
-Curso_Python_Completo/
+Curso_Pandas/
 ├── curso.md
-├── mundo-1-fundamentos-python/
-│   ├── mundo-1.md
-│   └── aulas/
-│       ├── aula-01.md
-│       ├── aula-02.md
-│       └── ...
-├── mundo-2-estruturas-logicas/
-│   ├── mundo-2.md
-│   └── aulas/
-│       └── ...
-```
+├── mundo-1-fundamentos/
+│ ├── mundo-1.md
+│ └── aulas/
+│ ├── aula-01.md
+│ ├── aula-02.md
+│ └── ...
+├── mundo-2-manipulacao/
+│ ├── mundo-2.md
+│ └── aulas/
+│ └── ...
 
 ---
 
 ## 🤝 Como Contribuir
 
 Você pode contribuir de várias formas:
-
-- Criando novos mundos para linguagens diferentes
-- Traduzindo os templates para outros idiomas
-- Gerando conteúdos com IA a partir dos templates e adicionando ao repositório
-- Sugerindo melhorias nos arquivos-base
+- Criando novos cursos para outras bibliotecas
+- Sugerindo melhorias na estrutura dos templates
+- Adicionando conteúdo gerado por IA ao repositório
+- Traduzindo os arquivos para outros idiomas
 
 ---
 
 ## 🌱 Para Começar
 
-1. Copie os arquivos de templates disponíveis na pasta `/templates`
-2. Escolha um tema e preencha o `curso.md`
-3. Crie um mundo com base em `mundo-base.md`
-4. Use o `aula-base.md` para gerar aulas com apoio de IA
-5. Gere exercícios depois que a aula estiver pronta
+1. Copie os arquivos de templates da pasta `/templates`
+2. Defina a biblioteca/tecnologia do curso
+3. Preencha o `curso.md` com informações gerais
+4. Estruture os mundos com `mundo-base.md` listando comandos e frentes de estudo
+5. Use o `aula-base.md` para gerar o conteúdo com IA
+6. Compile as aulas para formar sua apostila
 
 ---
 
 ## 📌 Licença
 
-Este projeto é open source e distribuído sob a licença [MIT](LICENSE). O objetivo é que qualquer pessoa possa usar, adaptar, modificar e distribuir os conteúdos criados a partir dessa estrutura.
+Este projeto é open source e distribuído sob a licença [MIT](LICENSE).
 
 ---
 
-## 📬 Fale Conosco
-
-Este projeto está em constante evolução. Se quiser conversar, propor mudanças ou contribuir, abra uma *issue* ou entre em contato com o autor principal deste repositório.
-
----
-
-> *"Educar com IA não é substituir o professor. É multiplicar possibilidades, acelerar a prática e manter o foco naquilo que importa: a aprendizagem."*
+> *"Com IA, não é sobre substituir o professor. É sobre acelerar a criação, manter a qualidade e ampliar o alcance do conhecimento."*
