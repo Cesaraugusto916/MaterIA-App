@@ -1,0 +1,179 @@
+Perfeito\! Chegamos ao momento de unir todas as peças. A Aula 10 é o ponto de virada, onde a teoria se torna prática. Vou elaborar a narrativa para que o aluno se sinta um verdadeiro analista de dados, resolvendo um problema real, e reforçar a importância de cada técnica aprendida.
+
+Aqui está o conteúdo da aula, totalmente revisado e expandido, com o estilo que você busca.
+
+-----
+
+# 🧠 Aula 10 — A Missão Final: O Projeto do Mundo 1
+
+## 🎓 Olá, Aventureiro\!
+
+Chegamos ao ponto alto da nossa jornada. Ao longo das últimas aulas, você aprendeu a importar, explorar, limpar, filtrar, ordenar e agrupar dados. Você também mergulhou na matemática por trás da manipulação, entendendo os arrays do **Numpy** e as operações com matrizes.
+
+Agora é a hora de amarrar todas essas habilidades em um único desafio: o **Projeto Final do Mundo 1**. Você não vai apenas replicar comandos; você vai pensar como um analista de dados, resolvendo um problema de negócio real.
+
+  - **Tema Central**: Aplicação integrada de Pandas e Numpy
+  - **Comando(s) Essencial(is)**: `read_csv()`, `loc[]`, `groupby()`, `agg()`, `np.array()`, `np.mean()`, `np.dot()` (e todos os outros\!)
+
+-----
+
+# 📍 O Desafio: A Análise de Vendas de E-commerce
+
+Imagine a seguinte situação: você foi contratado como analista júnior por uma empresa de e-commerce. A equipe de vendas precisa de um relatório detalhado para entender o desempenho geral e tomar decisões estratégicas. Sua missão é fornecer as respostas, usando todo o seu novo arsenal de ferramentas.
+
+Seu objetivo é extrair insights relevantes de um conjunto de dados de vendas para responder a perguntas-chave:
+
+1.  Quais produtos estão gerando o maior faturamento?
+2.  Qual loja está vendendo mais?
+3.  Como as vendas se comportaram ao longo dos dias?
+4.  Qual o valor médio de cada compra por loja (o ticket médio)?
+
+Este projeto é a sua chance de mostrar tudo o que você aprendeu e ir além.
+
+-----
+
+# 📈 Estrutura dos Dados e Primeira Etapa
+
+Você receberá um arquivo chamado `vendas.csv`. Ele contém todas as informações que você precisa para começar a sua análise.
+
+**Colunas do DataFrame:**
+
+  - `data`: data da venda
+  - `loja`: nome da loja onde a venda foi realizada
+  - `produto`: nome do item vendido
+  - `categoria`: tipo do produto (ex: Eletrônico, Livro)
+  - `preco_unitario`: valor de uma unidade do produto
+  - `quantidade`: número de unidades vendidas
+
+### 1\. Importação e exploração inicial
+
+A primeira etapa é sempre a mesma: importar os dados e fazer uma exploração inicial. Isso garante que você entenda a estrutura, o tipo de dado de cada coluna e se há valores ausentes.
+
+```python
+import pandas as pd
+import numpy as np # Já vamos importar o Numpy também!
+
+# Importe o arquivo
+df = pd.read_csv('vendas.csv')
+
+# Exiba as primeiras linhas para ter uma ideia do DataFrame
+print(df.head())
+
+# Verifique o tipo de cada coluna e a existência de nulos
+print(df.info())
+
+# Obtenha um resumo estatístico das colunas numéricas
+print(df.describe())
+```
+
+-----
+
+## 📚 Etapas Guiadas para o Projeto
+
+### 2\. A Métrica Mais Importante: Faturamento
+
+A coluna `faturamento` não existe no arquivo original. Para responder à maioria das perguntas, você precisará criá-la, multiplicando o preço unitário pela quantidade vendida.
+
+```python
+# Crie a nova coluna 'faturamento'
+df['faturamento'] = df['preco_unitario'] * df['quantidade']
+print(df.head())
+```
+
+### 3\. Respondendo com Filtros e Seleções
+
+Agora que você tem o faturamento, pode começar a responder as perguntas com base nas técnicas de filtragem que você dominou na Aula 06.
+
+```python
+# Responda: Quais foram as vendas acima de R$ 500?
+df_filtrado = df[df['faturamento'] > 500]
+print(df_filtrado)
+```
+
+### 4\. Resumos Poderosos: Agrupamentos e Ordenações
+
+Com a base preparada, use o `groupby()` e o `agg()` para resumir os dados e responder às perguntas de negócio.
+
+```python
+# Pergunta 1: Quais produtos tiveram maior faturamento?
+faturamento_produto = df.groupby('produto').agg({'faturamento': 'sum'}).sort_values(by='faturamento', ascending=False)
+print("--- 5 Produtos com Maior Faturamento ---")
+print(faturamento_produto.head())
+
+# Pergunta 2: Qual loja teve o maior volume de vendas?
+vendas_loja = df.groupby('loja').agg({'quantidade': 'sum'}).sort_values(by='quantidade', ascending=False)
+print("\n--- Volume de Vendas por Loja ---")
+print(vendas_loja)
+
+# Pergunta 3: Qual foi o ticket médio por loja?
+ticket_medio = df.groupby('loja').agg({'faturamento': 'sum', 'quantidade': 'sum'})
+ticket_medio['ticket_medio'] = ticket_medio['faturamento'] / ticket_medio['quantidade']
+print("\n--- Ticket Médio por Loja ---")
+print(ticket_medio.sort_values(by='ticket_medio', ascending=False))
+```
+
+### 5\. O Toque do Numpy: Análise de Média
+
+A pergunta sobre a média diária de vendas pede um cálculo que pode ser feito de forma elegante com Numpy.
+
+```python
+# Primeiro, agrupamos por data para obter o faturamento total de cada dia
+media_diaria = df.groupby('data').agg({'faturamento': 'sum'})
+
+# Convertemos a coluna de faturamento para um array Numpy
+faturamento_array = np.array(media_diaria['faturamento'])
+
+# Usamos a função np.mean() para calcular a média
+print("\n--- Média de Faturamento Diário ---")
+print(f"Média diária de faturamento: R$ {np.mean(faturamento_array):.2f}")
+```
+
+### 6\. O Desafio Final: A Matriz de Vendas
+
+Para a pergunta mais complexa, "Qual foi a matriz de vendas por produto e loja?", você usará uma função do Pandas (`pivot_table`) que nos dá a estrutura ideal para uma análise mais profunda, como a que vimos com o Numpy.
+
+```python
+# Cria a matriz de vendas por produto e loja
+matriz = df.pivot_table(values='quantidade', index='produto', columns='loja', aggfunc='sum', fill_value=0)
+print("\n--- Matriz de Vendas (Produto x Loja) ---")
+print(matriz)
+```
+
+-----
+
+## 🧪 Sua Demonstração Aplicada
+
+Sua tarefa não é apenas executar os códigos, mas criar um pequeno relatório com as descobertas.
+
+**O que entregar:**
+
+  - O código completo com comentários explicando cada etapa.
+  - Um texto conciso que responde a todas as perguntas-chave.
+  - (Opcional) Tente criar visualizações simples, como um gráfico de barras, usando bibliotecas como `matplotlib` ou `seaborn`.
+
+**Dicas para o sucesso:**
+
+  - **Pense antes de codar:** Leia as perguntas e planeje os passos.
+  - **Não tenha medo de erros:** Eles são parte do processo de aprendizagem. Use o `print()` para inspecionar seus dados a cada passo.
+  - **Continue a curiosidade:** Tente criar suas próprias perguntas. "Qual produto vende mais na loja X?" ou "Qual a categoria com maior ticket médio?".
+
+-----
+
+## 📎 Dicas e Armadilhas
+
+  - **Fique de olho nos `NaN`s:** Antes de qualquer cálculo, verifique se as colunas numéricas têm valores ausentes.
+  - **`groupby()` e `reset_index()`:** Lembre-se que `groupby()` transforma a coluna de agrupamento em índice. Se precisar dela como coluna, use `.reset_index()`.
+  - **`pivot_table` e `fill_value`:** Use `fill_value=0` para preencher células vazias na matriz. Isso é crucial para evitar `NaN`s em cálculos futuros.
+
+-----
+
+## 🔄 Transições e Conexões
+
+  - **Vem de**: Todas as aulas do Mundo 1\! Este projeto é o ápice, a prova de que você dominou desde a importação (`read_csv`) até a álgebra linear básica (`np.mean`, `np.dot`).
+  - **Vai para**: Com este projeto concluído, você está pronto para o **Mundo 2: Visualizadores de Dados**. Lá, você aprenderá a transformar os insights que você acabou de extrair em gráficos e visualizações incríveis, tornando suas análises mais acessíveis e impactantes.
+
+-----
+
+A jornada do Mundo 1 termina aqui, mas sua carreira como analista de dados está apenas começando. Este projeto é o seu primeiro passo para se tornar um profissional.
+
+Pronto para aplicar todo o seu conhecimento e se tornar um verdadeiro analista de dados?
